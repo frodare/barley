@@ -1,15 +1,13 @@
-# Wheat
+# Barley
 
-Wheat is a blogging engine that reads a git repo full of markdown articles and presents them as a website.
+Barley is a blogging engine forked from [Wheat](https://github.com/creationix/wheat) that reads a git repo full of markdown articles and presents them as a website.
 
-## How to Install
+I forked Wheat to attempt at add some new features for the [Beerd Brewing](http://beerd.us) blog site.
 
-Either manually install all the dependencies or use npm.  It's packaged nicely now.
+## Planned Features
 
-    npm install wheat
+### Tags
 
-For on the fly rendering of Graphviz graphs (DOT files), Graphviz will need to be [installed](http://www.graphviz.org/Download..php)
+### Published Status
 
-That's it!  Checkout the wheat branch of howtonode.org for an example of how to use the library.
-
-<http://github.com/creationix/howtonode.org>
+### Hiding Future Articles
