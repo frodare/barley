@@ -1,17 +1,20 @@
 {
-  "name": "wheat",
-  "description": "Git powered javascript blog.",
-  "tags": ["git","node","howtonode","blog"],
-  "version": "0.2.6",
-  "author": "Tim Caswell <tim@creationix.com>",
+  "name": "barley",
+  "description": "Node/Markdown powered javascript blog.",
+  "tags": ["markdown","node","blog"],
+  "version": "0.0.1",
+  "author": "Charles Howard <frodare@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "http://github.com/creationix/wheat.git"
+    "url": "https://github.com/frodare/barley.git"
   },
-  "bugs": "http://github.com/creationix/wheat/issues",
+  "bugs": "http://github.com/frodare/barley/issues",
   "engines": ["node >= 0.4.0"],
-  "main": "lib/wheat.js",
+  "main": "index.js",
   "dependencies": {
+    "express": "3.x",
+    "JQDeferred": ">=1.8.0",
+    "jquery-deferred": ">=0.2.0",
     "git-fs": ">=0.0.9",
     "simple-mime": ">=0.0.1",
     "haml": ">=0.2.5",
