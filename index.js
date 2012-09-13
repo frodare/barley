@@ -35,7 +35,7 @@ module.exports = function(root, options) {
 
 	console.log('launching Barley! ROOT[' + root + ']');
 
-	content(root);
+	var contentGet = content(root).get;
 
 	function addRoute(regex, renderer) {
 		routes.push({
@@ -45,17 +45,23 @@ module.exports = function(root, options) {
 	}
 
 	function handleRoute(req, res, next, rendererName, match) {
-		console.log('render name: ' + rendererName);
-		var dfd = renderers[rendererName]();
 
-		dfd.done(function(err, data) {
-			if (err) {
+		contentGet().done(function (catalog) {
+
+			var dfd = renderers[rendererName](catalog);
+
+			dfd.done(function(data) {
+				res.writeHead(200, data.headers);
+				res.end(data.buffer);
+			}).fail(function (err) {
 				console.log('renderer ' + rendererName + ' error: ' + err);
 				return err.errno === process.ENOENT ? next() : next(err);
-			}
-			res.writeHead(200, data.headers);
-			res.end(data.buffer);
+			});
 		});
+
+
+
+		
 	}
 
 	function determineRoute(req) {
