@@ -48,7 +48,9 @@ module.exports = function(root, options) {
 
 		contentGet().done(function (catalog) {
 
-			var dfd = renderers[rendererName](catalog);
+			match.unshift(catalog);
+
+			var dfd = renderers[rendererName].apply(null, match);
 
 			dfd.done(function(data) {
 				res.writeHead(200, data.headers);
@@ -58,10 +60,6 @@ module.exports = function(root, options) {
 				return err.errno === process.ENOENT ? next() : next(err);
 			});
 		});
-
-
-
-		
 	}
 
 	function determineRoute(req) {
@@ -75,7 +73,6 @@ module.exports = function(root, options) {
 
 			if (match) {
 				match = Array.prototype.slice.call(match, 1);
-				match.unshift('fs');
 				return {
 					match: match,
 					name: route.renderer
@@ -94,9 +91,9 @@ module.exports = function(root, options) {
 	 * setup routes
 	 */
 	addRoute(/^\/$/, 'index');
-	addRoute(/^\/feed.xml$/, 'feed');
+	//addRoute(/^\/feed.xml$/, 'feed');
 	addRoute(/^\/([a-z0-9_\-]+)$/, 'article');
-	addRoute(/^\/category\/([\%\.a-z0-9_\-]+)$/, 'categoryIndex');
+	//addRoute(/^\/category\/([\%\.a-z0-9_\-]+)$/, 'categoryIndex');
 
 	/*
 	 * return the middleware handle function
