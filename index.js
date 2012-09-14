@@ -92,7 +92,7 @@ module.exports = function(root, options) {
 	 */
 	addRoute(/^\/$/, 'index');
 	//addRoute(/^\/feed.xml$/, 'feed');
-	addRoute(/^\/([a-z0-9_\-]+)$/, 'article');
+	addRoute(/^\/([a-z0-9_\-]+)$/, 'entry');
 	//addRoute(/^\/category\/([\%\.a-z0-9_\-]+)$/, 'categoryIndex');
 
 	/*
